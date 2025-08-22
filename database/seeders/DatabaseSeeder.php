@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         $categories = Category::factory(4)->create();
 
         $questions = Question::factory(30)->create([
-            'category_id' => $categories->random()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
+            'category_id' => fn() => $categories->random()->id,
+            'user_id' => fn() => User::inRandomOrder()->first()->id,
         ]);
     }
 }
