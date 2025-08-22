@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\User;
@@ -26,6 +27,11 @@ class DatabaseSeeder extends Seeder
 
         $questions = Question::factory(30)->create([
             'category_id' => fn() => $categories->random()->id,
+            'user_id' => fn() => User::inRandomOrder()->first()->id,
+        ]);
+
+        $answers = Answer::factory(50)->create([
+            'question_id' => fn() => $questions->random()->id,
             'user_id' => fn() => User::inRandomOrder()->first()->id,
         ]);
     }
