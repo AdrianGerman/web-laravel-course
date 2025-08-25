@@ -9,6 +9,10 @@ class QuestionController extends Controller
 {
     public function show(Question $question)
     {
-        return view('questions.show', compact('question'));
+        $question->load('answers', 'category', 'user');
+
+        return view('questions.show', [
+            'question' => $question
+        ]);
     }
 }
