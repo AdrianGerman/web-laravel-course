@@ -4,14 +4,14 @@
 
         <div class="w-full">
             <h2 class="text-2xl font-bold md:text-3xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit
+                {{ $question->title }}
             </h2>
 
             <div class="flex justify-between">
                 <p class="text-xs text-gray-500">
-                    <span class="font-semibold">User</span> |
-                    Category |
-                    Created at
+                    <span class="font-semibold">{{ $question->user->name }}</span> |
+                    {{ $question->category->name }} |
+                    {{ $question->created_at->diffForHumans() }}
                 </p>
 
                 <div class="flex items-center gap-2">
@@ -34,39 +34,30 @@
 
     <div class="my-4">
         <p class="text-gray-200">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse eaque voluptatum suscipit. Excepturi
-            laboriosam ex provident quisquam voluptates vel, quis adipisci vitae nihil culpa odit impedit obcaecati fuga
-            facere.
+            {{ $question->description }}
         </p>
 
         <!-- Comments -->
     </div>
 
     <ul class="space-y-4">
+        @foreach ($question->answers as $answer)
+            <li>
+                <div class="flex items-start gap-2">
+                    <div>&hearts;</div>
 
-        <!-- foreach / answers -->
+                    <div>
+                        <p class="text-sm text-gray-300">
+                            {{ $answer->content }}
+                        </p>
+                        <p class="text-xs text-gray-500">
+                            {{ $answer->user->name }} | {{ $answer->created_at->diffForHumans() }}
+                        </p>
 
-        <li>
-            <div class="flex items-start gap-2">
-                <div>&hearts;</div>
-
-                <div>
-                    <p class="text-sm text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, odio aliquid repellat quisquam
-                        exercitationem a saepe? Iste illo unde tempora tenetur magni facilis! Est veniam earum laborum
-                        adipisci id numquam.
-                    </p>
-                    <p class="text-xs text-gray-500">
-                        User | Created at
-                    </p>
-
-                    <!-- Comments -->
+                        <!-- Comments -->
+                    </div>
                 </div>
-            </div>
-        </li>
-
-        <!-- endforeach -->
-
+            </li>
+        @endforeach
     </ul>
-
 </x-forum.layouts.app>
