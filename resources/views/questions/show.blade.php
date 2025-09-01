@@ -64,7 +64,7 @@
     <div class="mt-8">
         <h3 class="text-lg font-semibold mb-2">Tu Respuesta...</h3>
 
-        <form action="#" method="POST">
+        <form action="{{ route('answers.store', $question) }}" method="POST">
             @csrf
 
             <div class="mb-2">
