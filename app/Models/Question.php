@@ -30,4 +30,11 @@ class Question extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    protected static function booted()
+    {
+        static::deleting(function ($question) {
+            $question->hearts()->delete();
+        });
+    }
 }
