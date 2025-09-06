@@ -1,0 +1,26 @@
+<x-forum.layouts.app>
+    <div class="my-8">
+
+        <!-- foreach / questions -->
+
+        <div class="mb-4">
+            <h2 class="text-2xl font-bold">
+                <a href="#" class="hover:underline">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit
+                </a>
+            </h2>
+
+            <div class="flex gap-2">
+                <p class="text-xs text-gray-500">
+                    <span class="font-semibold">User</span> |
+                    Category |
+                    Created at
+                </p>
+            </div>
+        </div>
+
+        <!-- endforeach -->
+
+        <!-- Paginate -->
+    </div>
+</x-forum.layouts.app>
