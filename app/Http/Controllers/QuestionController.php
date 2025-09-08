@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,14 @@ class QuestionController extends Controller
 
         return view('questions.index', [
             'questions' => $questions,
+        ]);
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('questions.create', [
+            'categories' => $categories,
         ]);
     }
 
