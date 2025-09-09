@@ -1,5 +1,5 @@
 <x-forum.layouts.app>
-    <form action="#" method="POST" class="max-w-2xl mx-auto p-6">
+    <form action="{{ route('questions.store') }}" method="POST" class="max-w-2xl mx-auto p-6">
         @csrf
 
         <h1 class="text-2xl font-bold mb-4">Hacer una Pregunta</h1>
