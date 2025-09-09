@@ -30,6 +30,24 @@ class QuestionController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $question = Question::create([
+            'user_id' => 20,
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('questions.show', $question);
+    }
+
     public function show(Question $question)
     {
         $userId = 20;
