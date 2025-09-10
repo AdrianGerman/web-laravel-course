@@ -48,6 +48,15 @@ class QuestionController extends Controller
         return redirect()->route('questions.show', $question);
     }
 
+    public function edit(Question $question)
+    {
+        $categories = Category::all();
+        return view('questions.edit', [
+            'question' => $question,
+            'categories' => $categories,
+        ]);
+    }
+
     public function show(Question $question)
     {
         $userId = 20;
