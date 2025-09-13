@@ -38,7 +38,10 @@
                     <div class="flex items-center justify-center gap-6">
                         <a href="{{ route('questions.create') }}"
                             class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Preguntar</a>
-                        <a href="#" class="text-sm font-semibold text-gray-900">Login &rarr;</a>
+                        @guest
+                            <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-900">Login
+                                &rarr;</a>
+                        @endguest
                     </div>
                 </div>
             </div>
