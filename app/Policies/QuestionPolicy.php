@@ -14,6 +14,10 @@ class QuestionPolicy
 
     public function update(User $user, Question $question)
     {
-        return $user->id === $question->user_id;
+        $isOwner = $user->id === $question->user_id;
+
+        $isEmpty = $question->answers()->count() === 0 && $question->comments()->count() === 0;
+
+        return $isOwner && $isEmpty;
     }
 }
