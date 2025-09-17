@@ -6,6 +6,7 @@ use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Models\Category;
 use App\Models\Question;
+use App\Support\QuestionShowLoader;
 
 class QuestionController extends Controller
 {
@@ -63,9 +64,9 @@ class QuestionController extends Controller
         return redirect()->route('questions.show', $question);
     }
 
-    public function show(Question $question)
+    public function show(Question $question, QuestionShowLoader $loader)
     {
-
+        $loader->load($question);
 
         return view('questions.show', [
             'question' => $question
