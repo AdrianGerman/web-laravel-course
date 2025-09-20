@@ -23,10 +23,6 @@ Route::delete('questions/{question:slug}', [QuestionController::class, 'destroy'
 
 Route::post('/answers/{question}', [AnswerController::class, 'store'])->name('answers.store')->middleware('auth');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
